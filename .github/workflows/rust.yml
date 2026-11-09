@@ -1,0 +1,24 @@
+name: Rust core
+
+on:
+  push:
+    paths:
+      - "rust-core/**"
+      - ".github/workflows/rust.yml"
+  pull_request:
+    paths:
+      - "rust-core/**"
+      - ".github/workflows/rust.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - name: Check formatting
+        run: cargo fmt --manifest-path rust-core/Cargo.toml -- --check
+      - name: Run tests
+        run: cargo test --manifest-path rust-core/Cargo.toml

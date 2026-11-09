@@ -1,0 +1,15 @@
+[package]
+name = "autoviethoa-core"
+version = "0.1.0"
+edition = "2021"
+description = "Translation service and persistent cache for AUTO-VIETHOA-GAME"
+license = "MIT"
+
+[dependencies]
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+thiserror = "2"
+
+[dev-dependencies]
+tempfile = "3"
